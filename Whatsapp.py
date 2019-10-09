@@ -7,7 +7,12 @@ import random
 driver = webdriver.Chrome()
 driver.get('https://web.whatsapp.com')
 
-contact_names = ["contact1", "contact2", "contact3"]
+# Extract all contacts names
+contact_names = []
+webElements = driver.find_elements_by_xpath("//span[@class='_19RFN']")
+for name in webElements:
+    contact_names.append(name.text)
+
 msg = ["Hope you are doing well.",
        "I hope you have a good day.", "Greetings for the day."]
 
